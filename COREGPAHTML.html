@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+        //This function is called when the user clicks on the calcGPA button
+        function calcGPA()
+        {
+            //Extract the values from the HTML inputs by their assigned id and assigns them to variables
+            //The value extracted is converted from a string to a float/decimal
+            fIS201 = parseFloat(document.getElementById("is201Grade").value);
+            fACC200 = parseFloat(document.getElementById("acc200Grade").value);
+            fIS303= parseFloat(document.getElementById("is303Grade").value);
+            fOverallGPA = parseFloat(document.getElementById("overallGPA").value);
+            fLast30GPA = parseFloat(document.getElementById("last30GPA").value);
+            fEssay = parseInt(document.getElementById("essay").value);
+
+            //calculates new gpa
+            fFinalGPA = ((fIS201 * .3) + (fIS303 * .3) + (fACC200 * .05) + (fOverallGPA * .12) + (fLast30GPA * .18) + (fEssay * .05)).toFixed(2);
+
+            //Display the calculated GPA to the HTML label named "coreGPA"
+            document.getElementById("coreGPA").innerHTML = "Core GPA is " + fFinalGPA;
+        }
+    
+</script>
+</head>
+<body>
+    <h1>Core GPA Calculator</h1>
+    <form action="calcGPA">
+    <label for="overallGPA">Overall GPA:</label>
+    <input type="number" step=".01" id="overallGPA" name="overallGPA" min="0" max="4"><br><br>
+
+    <label for="last30GPA">Last 30 Credits GPA:</label>
+    <input type="number" step=".01" id="last30GPA" name="last30GPA" min="0" max="4"><br><br>
+
+    <label for="is201Grade">IS 201 Grade: </label>
+    <select name="is201Grade" id="is201Grade">
+        <option value="4.0">A</option>
+        <option value="3.7">A-</option>
+        <option value="3.4">B+</option>
+        <option value="3.0">B</option>
+        <option value="2.7">B-</option>
+        <option value="2.4">C+</option>
+        <option value="2.0">C</option>
+        <option value="1.7">C-</option>
+        <option value="1.4">D+</option>
+        <option value="1.0">D</option>
+        <option value=".7">D-</option>
+        <option value="0">E</option>
+    </select><br></br>
+    
+    <label for="acc200Grade">Acc 200 Grade: </label>
+    <select name="acc200Grade" id="acc200Grade">
+        <option value="4.0">A</option>
+        <option value="3.7">A-</option>
+        <option value="3.4">B+</option>
+        <option value="3.0">B</option>
+        <option value="2.7">B-</option>
+        <option value="2.4">C+</option>
+        <option value="2.0">C</option>
+        <option value="1.7">C-</option>
+        <option value="1.4">D+</option>
+        <option value="1.0">D</option>
+        <option value=".7">D-</option>
+        <option value="0">E</option>
+    </select><br></br>
+
+    <label for="is303Grade">IS 303 Grade: </label>
+    <select name="is303Grade" id="is303Grade">
+        <option value="4.0">A</option>
+        <option value="3.7">A-</option>
+        <option value="3.4">B+</option>
+        <option value="3.0">B</option>
+        <option value="2.7">B-</option>
+        <option value="2.4">C+</option>
+        <option value="2.0">C</option>
+        <option value="1.7">C-</option>
+        <option value="1.4">D+</option>
+        <option value="1.0">D</option>
+        <option value=".7">D-</option>
+        <option value="0">E</option>
+    </select><br></br>
+
+    <label for="essay">Essay Score: </label>
+    <select name="essay" id="essay">
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+        <option value="0">0</option>
+    </select><br></br>
+
+    <button type="button" onclick="calcGPA()">Calculate GPA</button><br></br>
+
+    <label for="coreGPA">Core GPA:</label>
+    <span id="coreGPA"></span><br><br>
+    </form>
+</body>
+</html>
